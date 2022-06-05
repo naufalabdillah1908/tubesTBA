@@ -143,7 +143,23 @@ def LA(sentence):
   
   return LA
 
+# S -> NN VB NN
+	# NN -> zij | hij | vlees | tofu | auto | hoed | schoen
+  # VB -> eet | rijdt | gebruikt
 
+st.write(""
+         Zij = she
+         hij = he
+         vlees = meat
+         tofu = tofu
+         auto = car
+         hoed = hat
+         schoen = shoe
+         eet = eat
+         rijdt = drives
+         gebruikt = use
+         "")
+         
 
 sentence = st.text_input("Masukkan Kalimat Belanda: ")
 button = st.button("Cek Kata")
