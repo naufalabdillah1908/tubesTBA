@@ -148,17 +148,17 @@ def LA(sentence):
   # VB -> eet | rijdt | gebruikt
 
 st.write(""
-         Zij = she
-         hij = he
-         vlees = meat
-         tofu = tofu
-         auto = car
-         hoed = hat
-         schoen = shoe
-         eet = eat
-         rijdt = drives
-         gebruikt = use
-         "")
+Zij = she
+hij = he
+vlees = meat
+tofu = tofu
+auto = car
+hoed = hat
+schoen = shoe
+eet = eat
+rijdt = drives
+gebruikt = use
+"")
          
 
 sentence = st.text_input("Masukkan Kalimat Belanda: ")
