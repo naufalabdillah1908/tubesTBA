@@ -147,7 +147,7 @@ def LA(sentence):
 	# NN -> zij | hij | vlees | tofu | auto | hoed | schoen
   # VB -> eet | rijdt | gebruikt
 
-st.write("Vocabulary: Zij = she, hij = he, vlees = meat, tofu = tofu, auto = car, hoed = hat, schoen = shoe, eet = eat, rijdt = drives, gebruikt = use")
+st.write("Vocabulary: \nZij = she, hij = he, vlees = meat, tofu = tofu, auto = car, hoed = hat, schoen = shoe, eet = eat, rijdt = drives, gebruikt = use")
          
 
 sentence = st.text_input("Masukkan Kalimat Belanda: ")
