@@ -148,6 +148,7 @@ def LA(sentence):
   # VB -> eet | rijdt | gebruikt
 
 st.write(""
+#Vocabulary
 Zij = she
 hij = he
 vlees = meat
@@ -157,8 +158,7 @@ hoed = hat
 schoen = shoe
 eet = eat
 rijdt = drives
-gebruikt = use
-"")
+gebruikt = use"")
          
 
 sentence = st.text_input("Masukkan Kalimat Belanda: ")
