@@ -147,6 +147,10 @@ def LA(sentence):
 	# NN -> zij | hij | vlees | tofu | auto | hoed | schoen
   # VB -> eet | rijdt | gebruikt
 
+st.write("""
+# Lexical Analyzer
+Tubes TBA
+""")
 st.write("Vocabulary: \nZij = she, hij = he, vlees = meat, tofu = tofu, auto = car, hoed = hat, schoen = shoe, eet = eat, rijdt = drives, gebruikt = use")
          
 
