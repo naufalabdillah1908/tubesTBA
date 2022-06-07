@@ -132,14 +132,14 @@ def LA(sentence):
     current += current_char
     state = transition_table[(state, current_char)]
     if state == 'q35':
-      st.write("kata saat ini: ", current, ', valid')
+      st.write(current, ' --> valid')
     if state == 'error':
-      st.write('error in: ', current, "\n id: ", idx)
+      st.write('error in: ', current, "with the id of ", idx, 'and state of', state)
       break;
     idx = idx + 1
 
   if state == 'accept':
-    st.write('semua kata di input: ', sentence, ', valid')
+    st.write(sentence, '--> all valid')
   
   return LA
 
