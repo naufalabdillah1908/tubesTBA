@@ -148,10 +148,34 @@ def LA(sentence):
   # VB -> eet | rijdt | gebruikt
 
 st.write("""
-# Lexical Analyzer
-Tubes TBA
+# DUTCH
+Lexical Analyzer
 """)
-st.write("Vocabulary: \nZij = she, hij = he, vlees = meat, tofu = tofu, auto = car, hoed = hat, schoen = shoe, eet = eat, rijdt = drives, gebruikt = use")
+
+colSubjects, colVerbs, colObjects = st.columns(3)
+
+with colSubjects:
+	st.write("""
+	#Subjects
+	zij (she)
+	hij (he)""")
+
+with colVerbs:
+	st.write("""
+	#Verbs
+	vlees (meat)
+	tofu (tofu)
+	auto (car)
+	hoed (hat)
+	schoen (shoe)""")
+	
+with colObjects:
+	st.write("""
+	#Objects
+	eet (eat)
+	rijdt (drive)
+	gebruikt (use)""")
+
          
 
 sentence = st.text_input("Masukkan Kalimat Belanda: ")
