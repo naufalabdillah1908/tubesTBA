@@ -135,7 +135,7 @@ def LA(sentence):
     if state == 'q35':
       st.write(current, ' --> valid')
     if state == 'error':
-      st.write('error in: ', current, "with the id of ", idx, 'and state of', f''{before_state}'')
+      st.write('error in: ', current, "with the id of ", idx, 'and state of', f"'{before_estate}'")
       break;
     idx = idx + 1
 
