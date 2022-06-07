@@ -75,12 +75,12 @@ def LA(sentence):
   transition_table[('q13', 'o')] = 'q35'
   transition_table[('q35', ' ')] = 'q36'
 
-  #string 'hoed'
-  transition_table[('q36', 'h')] = 'q14'
-  transition_table[('q0', 'h')] = 'q14'
+  #string 'boot'
+  transition_table[('q36', 'b')] = 'q14'
+  transition_table[('q0', 'b')] = 'q14'
   transition_table[('q14', 'o')] = 'q15'
-  transition_table[('q15', 'e')] = 'q16'
-  transition_table[('q16', 'd')] = 'q35'
+  transition_table[('q15', 'o')] = 'q16'
+  transition_table[('q16', 't')] = 'q35'
   transition_table[('q35', ' ')] = 'q36'
 
   #string 'schoen'
@@ -166,7 +166,7 @@ with colObjects:
 	st.write("vlees (meat)")
 	st.write("tofu (tofu)")
 	st.write("auto (car)")
-	st.write("hoed (hat)")
+	st.write("boot (boat)")
 	st.write("schoen (shoe)")
 
 sentence = st.text_input("Masukkan Kalimat Belanda: ")
