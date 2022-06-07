@@ -147,36 +147,27 @@ def LA(sentence):
 	# NN -> zij | hij | vlees | tofu | auto | hoed | schoen
   # VB -> eet | rijdt | gebruikt
 
-st.write("""
-# DUTCH
-Lexical Analyzer
-""")
+st.title("DUTCH - Lexical Analyzer")
 
 colSubjects, colVerbs, colObjects = st.columns(3)
-
 with colSubjects:
-	st.write("""
-	#Subjects
-	zij (she)
-	hij (he)""")
+	st.header("SUBJECTS")
+	st.write("zij (she)")
+	st.write("hij (he)")
 
 with colVerbs:
-	st.write("""
-	#Verbs
-	vlees (meat)
-	tofu (tofu)
-	auto (car)
-	hoed (hat)
-	schoen (shoe)""")
+	st.header("VERBS")
+	st.write("eet (eat)")
+	st.write("rijdt (drive)")
+	st.write("gebruikt (use)")
 	
 with colObjects:
-	st.write("""
-	#Objects
-	eet (eat)
-	rijdt (drive)
-	gebruikt (use)""")
-
-         
+	st.header("OBJECTS")
+	st.write("vlees (meat)")
+	st.write("tofu (tofu)")
+	st.write("auto (car)")
+	st.write("hoed (hat)")
+	st.write("schoen (shoe)")
 
 sentence = st.text_input("Masukkan Kalimat Belanda: ")
 button = st.button("Cek Kata")
