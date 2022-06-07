@@ -130,11 +130,12 @@ def LA(sentence):
   while state != 'accept':
     current_char = input_string[idx]
     current += current_char
+    before_state = state
     state = transition_table[(state, current_char)]
     if state == 'q35':
       st.write(current, ' --> valid')
     if state == 'error':
-      st.write('error in: ', current, "with the id of ", idx, 'and state of', state)
+      st.write('error in: ', current, "with the id of ", idx, 'and state of', f''{before_state}'')
       break;
     idx = idx + 1
 
