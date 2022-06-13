@@ -157,6 +157,7 @@ def parser(sentence):
 
   table[('S', 'zij')] = ['NN', 'VB', 'NN']
   table[('S', 'hij')] = ['NN', 'VB', 'NN']
+  table[('S', 'eet')] = ['error']
   table[('S', 'rijdt')] = ['error']
   table[('S', 'gebruikt')] = ['error'] 
   table[('S', 'vlees')] = ['NN', 'VB', 'NN']
