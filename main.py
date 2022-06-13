@@ -215,7 +215,7 @@ def Parser(sentence):
           stack.pop()
           st.write('isi stack:', stack)
       else:
-        st.write('error')
+        st.write('error!')
         break
     elif top in non_terminals:
       st.write('top adalah simbol non-terminal')
@@ -225,10 +225,10 @@ def Parser(sentence):
         for i in range(len(symbol_to_be_pushed)-1,-1,-1):
           stack.append(symbol_to_be_pushed[i])
       else:
-        st.write('error')
+        st.write('error!')
         break
     else:
-      st.write('error')
+      st.write('error!')
       break
     st.write('isi stack: ', stack)
     st.write("-----------")
