@@ -155,6 +155,8 @@ def parser(sentence):
 
   table = {}
 
+  table[('S', 'zij')] = ['NN VB NN']
+
   
 
 # S -> NN VB NN
