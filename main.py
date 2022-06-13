@@ -231,7 +231,7 @@ def Parser(sentence):
       st.write('error')
       break
     st.write('isi stack: ', stack)
-    st.write()
+    st.write("")
 
   # kesimpulan
   st.write()
@@ -284,7 +284,7 @@ button = st.button("Cek Kata")
 
 if button:
   LA(sentence)
-  st.write()
+  st.write("")
   Parser(sentence)
 
   
