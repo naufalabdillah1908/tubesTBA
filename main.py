@@ -144,101 +144,103 @@ def LA(sentence):
   
   return LA
 
-def parser(sentence):
+def Parser(sentence):
+  print("PARSER")
   tokens = sentence.lower().split()
   tokens.append('EOS')
 
+  # definisi simbol
   non_terminals = ['S', 'NN', 'VB']
-  terminals = ['zij', 'hij', 'vlees', 'tofu', 'auto', 'boot', 'schoen', 'eet',
-               'rijdt', 'gebruikt'
-               ]
+  terminals = ['zij', 'hij', 'vlees', 'tofu', 'auto', 'boot', 'schoen', 'eet', 'ridjt', 'gebruikt']
 
-  table = {}
+  parse_table = {}
 
-  table[('S', 'zij')] = ['NN', 'VB', 'NN']
-  table[('S', 'hij')] = ['NN', 'VB', 'NN']
-  table[('S', 'eet')] = ['error']
-  table[('S', 'rijdt')] = ['error']
-  table[('S', 'gebruikt')] = ['error'] 
-  table[('S', 'vlees')] = ['NN', 'VB', 'NN']
-  table[('S', 'tofu')] = ['NN', 'VB', 'NN'] 
-  table[('S', 'auto')] = ['NN', 'VB', 'NN'] 
-  table[('S', 'boot')] = ['NN', 'VB', 'NN'] 
-  table[('S', 'schoen')] = ['NN', 'VB', 'NN'] 
-  table[('S', 'EOS')] = ['error'] 
+  parse_table[('S', 'zij')] = ['NN', 'VB', 'NN']
+  parse_table[('S', 'hij')] = ['NN', 'VB', 'NN']
+  parse_table[('S', 'vlees')] = ['NN', 'VB', 'NN']
+  parse_table[('S', 'tofu')] = ['NN', 'VB', 'NN']
+  parse_table[('S', 'auto')] = ['NN', 'VB', 'NN']
+  parse_table[('S', 'boot')] = ['NN', 'VB', 'NN']
+  parse_table[('S', 'schoen')] = ['NN', 'VB', 'NN']
+  parse_table[('S', 'eet')] = ['error']
+  parse_table[('S', 'ridjt')] = ['error']
+  parse_table[('S', 'gebruikt')] = ['error']
+  parse_table[('S', 'EOS')] = ['error']
 
-  table[('NN', 'zij')] = ['zij']
-  table[('NN', 'hij')] = ['hij']
-  table[('NN', 'eet')] = ['error']
-  table[('NN', 'rijdt')] = ['error'] 
-  table[('NN', 'gebruikt')] = ['error'] 
-  table[('NN', 'vlees')] = ['vlees'] 
-  table[('NN', 'tofu')] = ['tofu'] 
-  table[('NN', 'auto')] = ['auto'] 
-  table[('NN', 'boot')] = ['boot'] 
-  table[('NN', 'schoen')] = ['schoen']
-  table[('NN', 'EOS')] = ['error']
+  parse_table[('NN', 'zij')] = ['zij']
+  parse_table[('NN', 'hij')] = ['hij']
+  parse_table[('NN', 'vlees')] = ['vlees']
+  parse_table[('NN', 'tofu')] = ['tofu']
+  parse_table[('NN', 'auto')] = ['auto']
+  parse_table[('NN', 'boot')] = ['boot']
+  parse_table[('NN', 'schoen')] = ['schoen']
+  parse_table[('NN', 'eet')] = ['error']
+  parse_table[('NN', 'ridjt')] = ['error']
+  parse_table[('NN', 'gebruikt')] = ['error']
+  parse_table[('NN', 'EOS')] = ['error']
 
-  table[('VB', 'zij')] = ['error']
-  table[('VB', 'hij')] = ['error']
-  table[('VB', 'eet')] = ['eet']
-  table[('VB', 'rijdt')] = ['rijdt']
-  table[('VB', 'gebruikt')] = ['gebruikt']
-  table[('VB', 'vlees')] = ['error']
-  table[('VB', 'auto')] = ['error']
-  table[('VB', 'boot')] = ['error']
-  table[('VB', 'schoen')] = ['error']
-  table[('VB', 'EOS')] = ['error']
+  parse_table[('VB', 'zij')] = ['error']
+  parse_table[('VB', 'hij')] = ['error']
+  parse_table[('VB', 'vlees')] = ['error']
+  parse_table[('VB', 'tofu')] = ['error']
+  parse_table[('VB', 'auto')] = ['error']
+  parse_table[('VB', 'boot')] = ['error']
+  parse_table[('VB', 'schoen')] = ['error']
+  parse_table[('VB', 'eet')] = ['eet']
+  parse_table[('VB', 'ridjt')] = ['ridjt']
+  parse_table[('VB', 'gebruikt')] = ['gebruikt']
+  parse_table[('VB', 'EOS')] = ['error']
 
-  #stack
+  # inisialisasi stack
   stack = []
-  stack.append("#")
+  stack.append('#')
   stack.append('S')
 
-  #input init
-  idx= 0
-  symbol = tokens[idx]
+  # inisialisasi input reading
+  idx_token = 0
+  symbol = tokens[idx_token]
 
-  #process
-  while len(stack) > 0:
+  # proses table parse
+  while (len(stack) > 0):
     top = stack[len(stack)-1]
-    st.write('top adalah ', top)
-    st.write('symbol = ', symbol)
-
+    print('top = ', top)
+    print('symbol  = ', symbol)
     if top in terminals:
-      st.write('top adalah simbol terminal')
+      print('top adalah simbol terminal')
       if top == symbol:
         stack.pop()
-        idx = idx + 1
-        symbol = tokens[idx]
+        idx_token = idx_token + 1
+        symbol = tokens[idx_token]
         if symbol == "EOS":
           stack.pop()
-          st.write('isi stack adalah: ', stack)
+          print('isi stack:', stack)
       else:
-        st.write('error')
+        print('error')
         break
     elif top in non_terminals:
-      st.write("top adalah non-terminal")
-      if table[(top, symbol)][0] != 'error':
+      print('top adalah simbol non-terminal')
+      if parse_table[(top, symbol)][0] != 'error':
         stack.pop()
-        push = table[(top, symbol)]
-        for i in range(len(push[1])-1, -1, -1):
-          stack.append(push[1])
+        symbol_to_be_pushed = parse_table[(top, symbol)]
+        for i in range(len(symbol_to_be_pushed)-1,-1,-1):
+          stack.append(symbol_to_be_pushed[i])
       else:
-        st.write('error')
+        print('error')
         break
     else:
-      st.write('error')
+      print('error')
       break
-  st.write('isi stack: ', stack)
+    print('isi stack: ', stack)
+    print()
 
+  # kesimpulan
+  print()
   if symbol == 'EOS' and len(stack) == 0:
-    st.write("input string", '"', sentence, '"', 'diterima, sesuai grammar' )
+    print('Input string ', '"', sentence, '"', ' diterima, sesuai Grammar')
   else:
-    st.write("Error, input string", '"', sentence,'"', "tidak diterima, Grammar salah")
+    print('Error, input string:', '"', sentence, '"', ', tidak diterima, tidak sesuai Grammar')
   
-
-  return parser
+  return Parser
 
 
 
@@ -282,4 +284,4 @@ button = st.button("Cek Kata")
 
 if button:
   LA(sentence)
-  parser(sentence)
+  Parser(sentence)
