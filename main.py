@@ -145,7 +145,7 @@ def LA(sentence):
   return LA
 
 def Parser(sentence):
-  print("PARSER")
+  st.write("PARSER")
   tokens = sentence.lower().split()
   tokens.append('EOS')
 
@@ -203,42 +203,42 @@ def Parser(sentence):
   # proses table parse
   while (len(stack) > 0):
     top = stack[len(stack)-1]
-    print('top = ', top)
-    print('symbol  = ', symbol)
+    st.write('top = ', top)
+    st.write('symbol  = ', symbol)
     if top in terminals:
-      print('top adalah simbol terminal')
+      st.write('top adalah simbol terminal')
       if top == symbol:
         stack.pop()
         idx_token = idx_token + 1
         symbol = tokens[idx_token]
         if symbol == "EOS":
           stack.pop()
-          print('isi stack:', stack)
+          st.write('isi stack:', stack)
       else:
-        print('error')
+        st.write('error')
         break
     elif top in non_terminals:
-      print('top adalah simbol non-terminal')
+      st.write('top adalah simbol non-terminal')
       if parse_table[(top, symbol)][0] != 'error':
         stack.pop()
         symbol_to_be_pushed = parse_table[(top, symbol)]
         for i in range(len(symbol_to_be_pushed)-1,-1,-1):
           stack.append(symbol_to_be_pushed[i])
       else:
-        print('error')
+        st.write('error')
         break
     else:
-      print('error')
+      st.write('error')
       break
-    print('isi stack: ', stack)
-    print()
+    st.write('isi stack: ', stack)
+    st.write()
 
   # kesimpulan
-  print()
+  st.write()
   if symbol == 'EOS' and len(stack) == 0:
-    print('Input string ', '"', sentence, '"', ' diterima, sesuai Grammar')
+    st.write('Input string ', '"', sentence, '"', ' diterima, sesuai Grammar')
   else:
-    print('Error, input string:', '"', sentence, '"', ', tidak diterima, tidak sesuai Grammar')
+    st.write('Error, input string:', '"', sentence, '"', ', tidak diterima, tidak sesuai Grammar')
   
   return Parser
 
