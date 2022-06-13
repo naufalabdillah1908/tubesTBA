@@ -144,8 +144,21 @@ def LA(sentence):
   
   return LA
 
+def parser(sentence):
+  tokens = sentence.lower().split()
+  tokens.append('EOS')
+
+  non_terminals = ['S', 'NN', 'VB']
+  terminals = ['zij', 'hij', 'vlees', 'tofu', 'auto', 'boot', 'schoen', 'eet',
+               'rijdt', 'gebruikt'
+               ]
+
+  table = {}
+
+  
+
 # S -> NN VB NN
-	# NN -> zij | hij | vlees | tofu | auto | hoed | schoen
+	# NN -> zij | hij | vlees | tofu | auto | boot | schoen
   # VB -> eet | rijdt | gebruikt
 
 st.title("DUTCH - Lexical Analyzer")
