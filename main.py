@@ -281,7 +281,10 @@ with colObjects:
 
 sentence = st.text_input("Masukkan Kalimat Belanda: ")
 button = st.button("Cek Kata")
+button2 = st.button("Cek Grammar")
 
 if button:
   LA(sentence)
+
+if button2:
   Parser(sentence)
