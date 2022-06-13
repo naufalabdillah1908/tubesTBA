@@ -231,7 +231,7 @@ def Parser(sentence):
       st.write('error')
       break
     st.write('isi stack: ', stack)
-    st.write("")
+    st.write("-----------")
 
   # kesimpulan
   st.write()
