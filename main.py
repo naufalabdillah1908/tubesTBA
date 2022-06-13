@@ -155,7 +155,98 @@ def parser(sentence):
 
   table = {}
 
-  table[('S', 'zij')] = ['NN VB NN']
+  table[('S', 'zij')] = ['NN', 'VB', 'NN']
+  table[('S', 'hij')] = ['NN', 'VB', 'NN']
+  table[('S', 'rijdt')] = ['error']
+  table[('S', 'gebruikt')] = ['error'] 
+  table[('S', 'vlees')] = ['NN', 'VB', 'NN']
+  table[('S', 'tofu')] = ['NN', 'VB', 'NN'] 
+  table[('S', 'auto')] = ['NN', 'VB', 'NN'] 
+  table[('S', 'boot')] = ['NN', 'VB', 'NN'] 
+  table[('S', 'schoen')] = ['NN', 'VB', 'NN'] 
+  table[('S', 'EOS')] = ['error'] 
+
+  table[('NN', 'zij')] = ['zij']
+  table[('NN', 'hij')] = ['hij']
+  table[('NN', 'eet')] = ['error']
+  table[('NN', 'rijdt')] = ['error'] 
+  table[('NN', 'gebruikt')] = ['error'] 
+  table[('NN', 'vlees')] = ['vlees'] 
+  table[('NN', 'tofu')] = ['tofu'] 
+  table[('NN', 'auto')] = ['auto'] 
+  table[('NN', 'boot')] = ['boot'] 
+  table[('NN', 'schoen')] = ['schoen']
+  table[('NN', 'EOS')] = ['error']
+
+  table[('VB', 'zij')] = ['error']
+  table[('VB', 'hij')] = ['error']
+  table[('VB', 'eet')] = ['eet']
+  table[('VB', 'rijdt')] = ['rijdt']
+  table[('VB', 'gebruikt')] = ['gebruikt']
+  table[('VB', 'vlees')] = ['error']
+  table[('VB', 'auto')] = ['error']
+  table[('VB', 'boot')] = ['error']
+  table[('VB', 'schoen')] = ['error']
+  table[('VB', 'EOS')] = ['error']
+
+  #stack
+  stack = []
+  stack.append("#")
+  stack.append('S')
+
+  #input init
+  idx= 0
+  symbol = tokens[idx]
+
+  #process
+  while len(stack) > 0:
+    top = stack[len(stack)-1]
+    st.write('top adalah ', top)
+    st.write('symbol = ', symbol)
+
+    if top in terminals:
+      st.write('top adalah simbol terminal')
+      if top == symbol:
+        stack.pop()
+        idx = idx + 1
+        symbol = tokens[idx]
+        if symbol == "EOS":
+          stack.pop()
+          st.write('isi stack adalah: ', stack)
+      else:
+        st.write('error')
+        break
+    elif top in non_terminals:
+      st.write("top adalah non-terminal")
+      if table[(top, symbol)][0] != 'error':
+        stack.pop()
+        push = table[(top, symbol)]
+        for i in range(len(push[1])-1, -1, -1):
+          stack.append(push[1])
+      else:
+        st.write('error')
+        break
+    else:
+      st.write('error')
+      break
+  st.write('isi stack: ', stack)
+
+  if symbol == 'EOS' and len(stack) == 0:
+    st.write("input string", '"', sentence, '"', 'diterima, sesuai grammar' )
+  else:
+    st.write("Error, input string", '"', sentence,'"', "tidak diterima, Grammar salah")
+  
+
+  return parser
+
+
+
+
+
+    
+  
+
+
 
   
 
@@ -190,3 +281,4 @@ button = st.button("Cek Kata")
 
 if button:
   LA(sentence)
+  parser(sentence)
