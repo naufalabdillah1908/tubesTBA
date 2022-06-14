@@ -151,7 +151,7 @@ def Parser(sentence):
 
   # definisi simbol
   non_terminals = ['S', 'NN', 'VB']
-  terminals = ['zij', 'hij', 'vlees', 'tofu', 'auto', 'boot', 'schoen', 'eet', 'ridjt', 'gebruikt']
+  terminals = ['zij', 'hij', 'vlees', 'tofu', 'auto', 'boot', 'schoen', 'eet', 'rijdt', 'gebruikt']
 
   parse_table = {}
 
@@ -163,7 +163,7 @@ def Parser(sentence):
   parse_table[('S', 'boot')] = ['NN', 'VB', 'NN']
   parse_table[('S', 'schoen')] = ['NN', 'VB', 'NN']
   parse_table[('S', 'eet')] = ['error']
-  parse_table[('S', 'ridjt')] = ['error']
+  parse_table[('S', 'rijdt')] = ['error']
   parse_table[('S', 'gebruikt')] = ['error']
   parse_table[('S', 'EOS')] = ['error']
 
@@ -175,7 +175,7 @@ def Parser(sentence):
   parse_table[('NN', 'boot')] = ['boot']
   parse_table[('NN', 'schoen')] = ['schoen']
   parse_table[('NN', 'eet')] = ['error']
-  parse_table[('NN', 'ridjt')] = ['error']
+  parse_table[('NN', 'rijdt')] = ['error']
   parse_table[('NN', 'gebruikt')] = ['error']
   parse_table[('NN', 'EOS')] = ['error']
 
@@ -187,7 +187,7 @@ def Parser(sentence):
   parse_table[('VB', 'boot')] = ['error']
   parse_table[('VB', 'schoen')] = ['error']
   parse_table[('VB', 'eet')] = ['eet']
-  parse_table[('VB', 'ridjt')] = ['ridjt']
+  parse_table[('VB', 'rijdt')] = ['rijdt']
   parse_table[('VB', 'gebruikt')] = ['gebruikt']
   parse_table[('VB', 'EOS')] = ['error']
 
@@ -215,7 +215,7 @@ def Parser(sentence):
           stack.pop()
           st.write('isi stack:', stack)
       else:
-        st.write('error!')
+        st.write('error')
         break
     elif top in non_terminals:
       st.write('top adalah simbol non-terminal')
@@ -225,10 +225,10 @@ def Parser(sentence):
         for i in range(len(symbol_to_be_pushed)-1,-1,-1):
           stack.append(symbol_to_be_pushed[i])
       else:
-        st.write('error!')
+        st.write('error')
         break
     else:
-      st.write('error!')
+      st.write('error')
       break
     st.write('isi stack: ', stack)
     st.write("-----------")
@@ -243,21 +243,11 @@ def Parser(sentence):
   return Parser
 
 
-
-
-
-    
-  
-
-
-
-  
-
 # S -> NN VB NN
-	# NN -> zij | hij | vlees | tofu | auto | boot | schoen
-  # VB -> eet | rijdt | gebruikt
+# NN -> zij | hij | vlees | tofu | auto | boot | schoen
+# VB -> eet | rijdt | gebruikt
 
-st.title("DUTCH - Lexical Analyzer")
+st.title("DUTCH - Lexical Analyzer & Parser")
 
 colSubjects, colVerbs, colObjects = st.columns(3)
 with colSubjects:
