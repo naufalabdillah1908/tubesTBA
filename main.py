@@ -3,6 +3,7 @@ import streamlit as st
 
 def LA(sentence):
   # init
+  st.subheader("Lexical Analyzer")
   alphabet_list = list(string.ascii_lowercase)
   state_list = [
                 'q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 
@@ -145,7 +146,7 @@ def LA(sentence):
   return LA
 
 def Parser(sentence):
-  st.write("PARSER")
+  st.subheader("Parser")
   tokens = sentence.lower().split()
   tokens.append('EOS')
 
