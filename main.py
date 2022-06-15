@@ -3,6 +3,7 @@ import streamlit as st
 
 def LA(sentence):
   # init
+  global state
   st.subheader("Lexical Analyzer")
   alphabet_list = list(string.ascii_lowercase)
   state_list = [
@@ -275,7 +276,9 @@ button = st.button("Cek Kata")
 
 if button:
   LA(sentence)
-  st.write("")
-  Parser(sentence)
+
+  if state != 'error':
+    st.write("")
+    Parser(sentence)
 
   
